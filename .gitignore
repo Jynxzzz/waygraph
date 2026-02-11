@@ -6,6 +6,7 @@ dist/
 build/
 .env
 *.pkl
+!app/sample_data/*.pkl
 *.tfrecord
 *.h5
 .DS_Store

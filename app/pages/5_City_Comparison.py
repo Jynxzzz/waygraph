@@ -66,7 +66,7 @@ data_dir = get_data_dir()
 scenario_files = list_scenario_files(data_dir)
 
 if not scenario_files:
-    st.warning("No scenario files found. Showing demo comparison data.")
+    st.info("Comparing sample city data (San Francisco vs Phoenix).")
 
     # Generate synthetic city data
     np.random.seed(42)

@@ -100,9 +100,9 @@ with st.sidebar:
     n_files = len(scenario_files)
 
     if n_files > 0:
-        st.success(f"Found {n_files} scenario files")
+        st.success(f"Loaded {n_files} WOMD scenario files")
     else:
-        st.warning("No .pkl files found. Using demo mode.")
+        st.info("Running with sample data — explore the full pipeline below.")
 
     st.markdown("---")
     st.markdown("### Quick Links")
@@ -246,14 +246,14 @@ if n_files > 0:
 
 else:
     # Demo mode
-    st.markdown("### Demo Mode")
+    st.markdown("### Explore WayGraph")
 
     st.markdown("""
     <div class="info-box">
-    <b>No scenario data found.</b> The dashboard is running in demo mode.<br><br>
-    To use with real data, point the <b>Scenario Data Directory</b> in the sidebar
-    to a folder containing WOMD <code>.pkl</code> files, or set the
-    <code>WAYGRAPH_DATA_DIR</code> environment variable.
+    <b>Welcome to WayGraph!</b> Explore the GPS-free localization pipeline with sample data.
+    Navigate the pages in the sidebar to see star pattern fingerprinting, matching results,
+    traffic analysis, and more.<br><br>
+    For full dataset analysis, install WayGraph locally with your own WOMD <code>.pkl</code> files.
     </div>
     """, unsafe_allow_html=True)
 

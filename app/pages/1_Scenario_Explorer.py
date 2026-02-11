@@ -54,7 +54,7 @@ use_demo = len(scenario_files) == 0
 
 # --- File Selection ---
 if use_demo:
-    st.info("No scenario files found. Loading a synthetic demo scenario.")
+    st.info("Exploring with sample scenario data.")
     selected_file = "demo_scenario"
     scenario = generate_demo_scenario()
     scenario_id = "demo_cross_intersection"

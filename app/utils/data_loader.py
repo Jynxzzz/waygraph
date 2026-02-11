@@ -29,11 +29,15 @@ from waygraph.traffic import (
     GapAcceptanceExtractor,
 )
 
-# Default data directory - use environment variable or fall back to a relative path.
-# On Streamlit Cloud, no .pkl files will be present, so demo mode activates automatically.
+# Default data directory - use environment variable, or fall back to sample_data
+# (bundled with the repo for Streamlit Cloud), or a local data/ directory.
+_SAMPLE_DATA_DIR = str(Path(__file__).resolve().parent.parent / "sample_data")
+_LOCAL_DATA_DIR = str(Path(__file__).resolve().parent.parent / "data")
+
 DEFAULT_DATA_DIR = os.environ.get(
     "WAYGRAPH_DATA_DIR",
-    str(Path(__file__).resolve().parent.parent / "data"),
+    _SAMPLE_DATA_DIR if Path(_SAMPLE_DATA_DIR).exists() and any(Path(_SAMPLE_DATA_DIR).glob("*.pkl"))
+    else _LOCAL_DATA_DIR,
 )
 
 
