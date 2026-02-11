@@ -127,13 +127,17 @@ else:
     )
 
     total_files = len(scenario_files)
-    n_analyze = st.slider(
-        "Total scenarios to analyze",
-        min_value=10,
-        max_value=min(total_files, 100),
-        value=min(total_files, 40),
-        step=10,
-    )
+    if total_files >= 10:
+        n_analyze = st.slider(
+            "Total scenarios to analyze",
+            min_value=10,
+            max_value=min(total_files, 100),
+            value=min(total_files, 40),
+            step=10,
+        )
+    else:
+        n_analyze = total_files
+        st.info(f"Analyzing all {total_files} available scenarios.")
 
     split_point = n_analyze // 2
     st.markdown(f"**Group A:** first {split_point} files | **Group B:** next {n_analyze - split_point} files")
