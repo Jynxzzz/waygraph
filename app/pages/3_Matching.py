@@ -297,7 +297,8 @@ st.markdown("---")
 st.markdown("### Batch Matching")
 
 if not use_demo and len(scenario_files) > 1:
-    n_batch = st.slider("Scenarios to match", 5, min(50, len(scenario_files)), 10)
+    max_batch = min(50, len(scenario_files))
+    n_batch = st.slider("Scenarios to match", 1, max(max_batch, 2), min(10, max_batch)) if max_batch > 1 else max_batch
 
     if st.button("Run Batch Matching", use_container_width=True):
         progress = st.progress(0)

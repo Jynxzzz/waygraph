@@ -311,7 +311,8 @@ if not use_demo and len(scenario_files) > 1:
     st.markdown("### Aggregate Traffic Statistics")
     st.markdown("Analyze traffic parameters across multiple scenarios.")
 
-    n_aggregate = st.slider("Scenarios to aggregate", 5, min(30, len(scenario_files)), 10, key="agg_slider")
+    max_agg = min(30, len(scenario_files))
+    n_aggregate = st.slider("Scenarios to aggregate", 1, max(max_agg, 2), min(10, max_agg), key="agg_slider") if max_agg > 1 else max_agg
 
     if st.button("Run Aggregate Analysis", use_container_width=True):
         progress = st.progress(0)

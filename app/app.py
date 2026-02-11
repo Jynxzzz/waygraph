@@ -174,14 +174,17 @@ st.markdown("")
 if n_files > 0:
     st.markdown("### Dataset Analysis")
 
-    batch_size = st.slider(
-        "Number of scenarios to analyze",
-        min_value=5,
-        max_value=min(n_files, 100),
-        value=min(n_files, 30),
-        step=5,
-        help="More scenarios = better statistics but slower loading",
-    )
+    if n_files > 5:
+        batch_size = st.slider(
+            "Number of scenarios to analyze",
+            min_value=5,
+            max_value=min(n_files, 100),
+            value=min(n_files, 30),
+            step=5,
+            help="More scenarios = better statistics but slower loading",
+        )
+    else:
+        batch_size = n_files
 
     df = extract_batch_summaries(data_dir, scenario_files, max_files=batch_size)
 
